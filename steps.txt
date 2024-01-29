@@ -1,0 +1,74 @@
+# How To Run MongoDb In Docker : 
+
+docker run -d --rm --name mongo-container -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' mongo
+docker ps
+docker exec -it mongo-container bash
+mongosh -u root -p secret
+show dbs
+use admin
+db.getUsers()
+use products
+db.products.insertOne({name:'Ubuntu'})
+db.products.find()
+exit
+exit
+docker stop mongo-container
+docker ps
+docker run -d --rm --name mongo-container -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' mongo
+docker ps
+docker exec -it mongo-container bash
+mongosh -u root -p secret
+show dbs
+exit
+exit
+docker ps
+docker stop mongo-container
+docker ps
+docker run -d --rm --name mongo-container -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' -v mongoData:/data/db mongo
+docker ps
+docker exec -it mongo-container bash
+mongosh -u root -p secret
+show dbs
+use products
+db.products.insertOne({name:'Ubuntu'})
+db.products.find()
+exit
+exit
+docker stop mongo-container
+docker ps
+docker run -d --rm --name mongo-container -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' -v mongoData:/data/db mongo
+docker volume ls
+docker ps
+docker exec -it mongo-container bash
+mongosh -u root -p secret
+show dbs
+use products
+db.products.find()
+exit
+exit
+docker stop mongo-container
+docker volume ls
+docker volume remove mongoData
+docker volume ls
+docker run -d --rm --name mongo-container -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' -v $(pwd):/data/db mongo
+docker exec -it mongo-container bash
+mongosh -u root -p secret
+show dbs
+use products
+db.products.insertOne({name:'Ubuntu'})
+db.products.find()
+exit
+exit
+docker stop mongo-container
+docker run -d --rm --name mongo-container -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' -v $(pwd):/data/db mongo
+docker ps
+docker exec -it mongo-container bash
+mongosh -u root -p secret
+show dbs
+use products
+db.products.find()
+exit
+exit
+docker run -d --rm --name mongo-container -e MONGO_INITDB_ROOT_USERNAME='root' -e MONGO_INITDB_ROOT_PASSWORD='secret' -v $(pwd):/data/db -p 27017(Host Port):27017(Container Port) mongo
+docker stop mongo-container
+docker ps
